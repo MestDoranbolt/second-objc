@@ -4,6 +4,7 @@
 #import "PBWIZasob.h"
 #import "PBWIBiurko.h"
 #import "PBWIKrzeslo.h"
+#import "PBWISzafa.h"
 #import "PBWIPokoj.h"
 #import "PBWIZasobyWydzialu.h"
 
@@ -35,11 +36,10 @@ int main()
         [wydzial dodajPokoj: pokojDwa];
         
         // metoda dodajaca zasob do pokoju
-        PBWIKrzeslo * krzesloDwa = [[PBWIKrzeslo alloc] init];
-        [krzesloDwa setObicie: @"material"];
-        [krzesloDwa setKolor: @"braz"];
-        [wydzial dodajZasob:krzesloDwa doPokoju:pokojDwa];
-        NSLog(@"Krzeslo dodane: %@", [krzesloDwa opisZasobu]);
+        PBWISzafa *szafa = [[PBWISzafa alloc] initWithParams:200 :80 :60];
+        [szafa setKolor:@"czarny"];
+        [wydzial dodajZasob:szafa doPokoju:pokojDwa];
+        NSLog(@"Szafa dodana: %@", [szafa opisZasobu]);
         
         // metoda przenoszaca zasob do innego pokoju
         NSLog(@"Przenoszenie krzesla");
@@ -52,7 +52,7 @@ int main()
         // metoda usuwajaca zasob z pokoju
         zasoby = [pokojDwa wszystkieZasoby];
         NSLog(@"Ilosc zasobow w pokoju 2 przed usunieciem: %lu", (unsigned long)[zasoby count]);
-        [wydzial usunZasob:krzesloDwa zPokoju:pokojDwa];
+        [wydzial usunZasob:szafa zPokoju:pokojDwa];
         zasoby = [pokojDwa wszystkieZasoby];
         NSLog(@"Ilosc zasobow w pokoju 2 po usunieciu: %lu", (unsigned long)[zasoby count]);
         
